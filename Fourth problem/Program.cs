@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,22 +13,23 @@ namespace Fourth_problem
     {
         static void Main(string[] args)
         {
-            //Максимально возможное 998001
-            bool flag = false;
+            //Максимально возможное 998009
             int result = 0;
-            for (int i = 999; i > 0; i--)
+            int max = 0;
+            for (int i = 100; i < 1000; i++)
             {
-                for (int j = 999; j > 0; j--)
+                for (int j = 100; j < 1000; j++)
                 {
                     result = i * j;
-                    if (IsNumberPolindrom(result))
+                    if (result > max && IsNumberPolindrom(result))
                     {
-                        Console.WriteLine(result);
-                        Console.ReadLine();
-                        return;
+                        max = result;
                     }
                 }
             }
+
+            Console.WriteLine(max);
+            Console.ReadLine();
         }
 
         public static bool IsNumberPolindrom(int number)
